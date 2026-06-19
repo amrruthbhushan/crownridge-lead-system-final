@@ -1,0 +1,162 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String         @id @default(uuid())
+  name          String
+  email         String         @unique
+  password      String
+  role          String         @default("SALES_REP") // ADMIN, SALES_REP, PROJECT_MANAGER, TECH_LEAD
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  assignments   Assignment[]
+  notifications Notification[]
+  activityLogs  ActivityLog[]
+  reports       Report[]
+}
+
+model Lead {
+  id                String              @id @default(uuid())
+  name              String
+  companyName       String
+  email             String
+  phone             String
+  industry          String
+  budget            String              // LOW, MEDIUM, HIGH
+  projectSize       String              // SMALL, MEDIUM, LARGE
+  urgency           String              // LOW, MEDIUM, HIGH
+  source            String              // WEBSITE, LINKEDIN, REFERRAL
+  status            String              @default("NEW") // NEW, QUALIFIED, CONTACTED, PROPOSAL_SENT, NEGOTIATION, WON, LOST
+  industryFit       String              @default("GOOD") // POOR, GOOD, EXCELLENT
+  notes             String?
+  estimatedBudget   Int                 @default(0)
+  expectedRevenue   Int                 @default(0)
+  conversionProbability Int             @default(0)
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  score             LeadScore?
+  assignment        Assignment?
+  checklist         Checklist?
+  activityLogs      ActivityLog[]
+  statusHistory     StatusHistory[]
+  assignmentHistory AssignmentHistory[]
+  documents         Document[]
+  communicationLogs CommunicationLog[]
+}
+
+model LeadScore {
+  id               String   @id @default(uuid())
+  leadId           String   @unique
+  lead             Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  score            Int
+  temperature      String   // COLD, WARM, HOT
+  budgetScore      Int
+  projectSizeScore Int
+  urgencyScore     Int
+  industryFitScore Int
+  createdAt        DateTime @default(now())
+}
+
+model Assignment {
+  id           String   @id @default(uuid())
+  leadId       String   @unique
+  lead         Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  assignedToId String?
+  assignedTo   User?    @relation(fields: [assignedToId], references: [id], onDelete: SetNull)
+  assignedDate DateTime @default(now())
+  notes        String?
+  createdAt    DateTime @default(now())
+}
+
+model Checklist {
+  id                      String   @id @default(uuid())
+  leadId                  String   @unique
+  lead                    Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  budgetConfirmed         Boolean  @default(false)
+  decisionMakerIdentified Boolean  @default(false)
+  timelineConfirmed       Boolean  @default(false)
+  requirementsCollected   Boolean  @default(false)
+  proposalSent            Boolean  @default(false)
+  progress                Int      @default(0) // 0 to 100
+  updatedAt               DateTime @updatedAt
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  message   String
+  isRead    Boolean  @default(false)
+  type      String   // NEW_LEAD, LEAD_ASSIGNED, STATUS_UPDATED, CHECKLIST_COMPLETED
+  createdAt DateTime @default(now())
+}
+
+model ActivityLog {
+  id          String   @id @default(uuid())
+  leadId      String
+  lead        Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  userId      String?
+  user        User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action      String
+  description String
+  createdAt   DateTime @default(now())
+}
+
+model Report {
+  id          String   @id @default(uuid())
+  name        String
+  type        String   // LEAD_PERFORMANCE, SALES_PERFORMANCE, CONVERSION
+  createdById String?
+  createdBy   User?    @relation(fields: [createdById], references: [id], onDelete: SetNull)
+  filePath    String
+  createdAt   DateTime @default(now())
+}
+
+model StatusHistory {
+  id          String   @id @default(uuid())
+  leadId      String
+  lead        Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  oldStatus   String?
+  newStatus   String
+  changedBy   String   @default("System")
+  createdAt   DateTime @default(now())
+}
+
+model AssignmentHistory {
+  id           String   @id @default(uuid())
+  leadId       String
+  lead         Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  assignedTo   String?
+  assignedBy   String   @default("System")
+  notes        String?
+  createdAt    DateTime @default(now())
+}
+
+model Document {
+  id          String   @id @default(uuid())
+  leadId      String
+  lead        Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  name        String
+  fileSize    String   // e.g. "1.2 MB"
+  fileType    String   // e.g. "PDF", "DOCX"
+  uploadedBy  String   @default("System")
+  createdAt   DateTime @default(now())
+}
+
+model CommunicationLog {
+  id          String   @id @default(uuid())
+  leadId      String
+  lead        Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  type        String   // EMAIL, CALL, MEETING, CHAT
+  subject     String
+  body        String
+  loggedBy    String   @default("System")
+  createdAt   DateTime @default(now())
+}

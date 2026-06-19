@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: crownridge-lead-system-api
+    env: node
+    rootDir: backend
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        value: file:./prisma/dev.db
+      - key: FRONTEND_URL
+        sync: false  # Set this manually to your Netlify/Vercel URL after frontend deploy
+    healthCheckPath: /api/health
