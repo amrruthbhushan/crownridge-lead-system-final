@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import prisma from '../services/db.js';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'crownridge-super-secret-security-key-2026';
+const JWT_SECRET = process.env.JWT_SECRET;
 
 /**
  * Register user

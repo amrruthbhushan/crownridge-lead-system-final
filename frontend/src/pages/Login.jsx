@@ -91,27 +91,27 @@ export default function Login() {
               </div>
               
               <div 
-                onClick={() => fillCredentials('sarah.sales@crownridge.com', 'sales123')}
+                onClick={() => fillCredentials('rahul.verma@crownridge.com', 'sales123')}
                 className="p-3 bg-slate-800/80 dark:bg-slate-900/50 hover:bg-slate-750 dark:hover:bg-slate-800/80 border border-slate-750 dark:border-slate-800 rounded-2xl cursor-pointer transition-all hover:border-brand-500 hover:-translate-y-0.5 group"
               >
-                <div className="font-bold text-white group-hover:text-brand-300">Sales Representative 1</div>
-                <div className="text-slate-400 text-[10px] mt-0.5">sarah.sales@crownridge.com</div>
+                <div className="font-bold text-white group-hover:text-brand-300">Rahul Verma</div>
+                <div className="text-slate-400 text-[10px] mt-0.5">rahul.verma@crownridge.com</div>
               </div>
 
               <div 
-                onClick={() => fillCredentials('john.sales@crownridge.com', 'sales123')}
+                onClick={() => fillCredentials('ananya.reddy@crownridge.com', 'sales123')}
                 className="p-3 bg-slate-800/80 dark:bg-slate-900/50 hover:bg-slate-750 dark:hover:bg-slate-800/80 border border-slate-750 dark:border-slate-800 rounded-2xl cursor-pointer transition-all hover:border-brand-500 hover:-translate-y-0.5 group"
               >
-                <div className="font-bold text-white group-hover:text-brand-300">Sales Representative 2</div>
-                <div className="text-slate-400 text-[10px] mt-0.5">john.sales@crownridge.com</div>
+                <div className="font-bold text-white group-hover:text-brand-300">Ananya Reddy</div>
+                <div className="text-slate-400 text-[10px] mt-0.5">ananya.reddy@crownridge.com</div>
               </div>
 
               <div 
-                onClick={() => fillCredentials('peter.pm@crownridge.com', 'pm123')}
+                onClick={() => fillCredentials('vikram.singh@crownridge.com', 'pm123')}
                 className="p-3 bg-slate-800/80 dark:bg-slate-900/50 hover:bg-slate-750 dark:hover:bg-slate-800/80 border border-slate-750 dark:border-slate-800 rounded-2xl cursor-pointer transition-all hover:border-brand-500 hover:-translate-y-0.5 group"
               >
-                <div className="font-bold text-white group-hover:text-brand-300">Project Manager</div>
-                <div className="text-slate-400 text-[10px] mt-0.5">peter.pm@crownridge.com</div>
+                <div className="font-bold text-white group-hover:text-brand-300">Vikram Singh (PM)</div>
+                <div className="text-slate-400 text-[10px] mt-0.5">vikram.singh@crownridge.com</div>
               </div>
             </div>
           </div>
@@ -142,13 +142,13 @@ export default function Login() {
             <div className="space-y-1.5">
               <label className="text-[10px] font-bold text-slate-500 dark:text-slate-450 uppercase tracking-wider">Email Address</label>
               <div className="relative">
-                <Mail className="absolute left-3.5 top-3.5 h-4.5 w-4.5 text-slate-400" />
+                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 pointer-events-none" />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@company.com"
-                  className="premium-input pl-10.5"
+                  className="premium-input pl-11"
                 />
               </div>
             </div>
@@ -156,13 +156,13 @@ export default function Login() {
             <div className="space-y-1.5">
               <label className="text-[10px] font-bold text-slate-500 dark:text-slate-450 uppercase tracking-wider">Password</label>
               <div className="relative">
-                <Lock className="absolute left-3.5 top-3.5 h-4.5 w-4.5 text-slate-400" />
+                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 pointer-events-none" />
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="premium-input pl-10.5"
+                  className="premium-input pl-11"
                 />
               </div>
             </div>

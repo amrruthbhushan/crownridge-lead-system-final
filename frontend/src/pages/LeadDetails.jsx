@@ -506,7 +506,7 @@ export default function LeadDetails() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div className="flex gap-3">
                     <div className="p-2 bg-slate-50 dark:bg-slate-950/40 border border-slate-100 dark:border-slate-800 rounded-xl shrink-0 h-10 w-10 flex items-center justify-center">
-                      <Mail className="h-4.5 w-4.5 text-slate-505 dark:text-slate-400" />
+                      <Mail className="h-5 w-5 text-slate-505 dark:text-slate-400" />
                     </div>
                     <div className="space-y-0.5">
                       <div className="text-[9px] font-bold text-slate-400 dark:text-slate-550 uppercase tracking-wider">Email Address</div>
@@ -516,7 +516,7 @@ export default function LeadDetails() {
 
                   <div className="flex gap-3">
                     <div className="p-2 bg-slate-50 dark:bg-slate-950/40 border border-slate-100 dark:border-slate-800 rounded-xl shrink-0 h-10 w-10 flex items-center justify-center">
-                      <Phone className="h-4.5 w-4.5 text-slate-505 dark:text-slate-400" />
+                      <Phone className="h-5 w-5 text-slate-505 dark:text-slate-400" />
                     </div>
                     <div className="space-y-0.5">
                       <div className="text-[9px] font-bold text-slate-400 dark:text-slate-550 uppercase tracking-wider">Phone Number</div>
@@ -526,7 +526,7 @@ export default function LeadDetails() {
 
                   <div className="flex gap-3">
                     <div className="p-2 bg-slate-50 dark:bg-slate-950/40 border border-slate-100 dark:border-slate-800 rounded-xl shrink-0 h-10 w-10 flex items-center justify-center">
-                      <Briefcase className="h-4.5 w-4.5 text-slate-505 dark:text-slate-400" />
+                      <Briefcase className="h-5 w-5 text-slate-505 dark:text-slate-400" />
                     </div>
                     <div className="space-y-0.5">
                       <div className="text-[9px] font-bold text-slate-400 dark:text-slate-550 uppercase tracking-wider">Industry Sector</div>
@@ -536,7 +536,7 @@ export default function LeadDetails() {
 
                   <div className="flex gap-3">
                     <div className="p-2 bg-slate-50 dark:bg-slate-950/40 border border-slate-100 dark:border-slate-800 rounded-xl shrink-0 h-10 w-10 flex items-center justify-center">
-                      <Send className="h-4.5 w-4.5 text-slate-505 dark:text-slate-400" />
+                      <Send className="h-5 w-5 text-slate-505 dark:text-slate-400" />
                     </div>
                     <div className="space-y-0.5">
                       <div className="text-[9px] font-bold text-slate-400 dark:text-slate-550 uppercase tracking-wider">Inbound Source</div>
@@ -615,7 +615,7 @@ export default function LeadDetails() {
                           type="checkbox"
                           checked={isChecked}
                           onChange={() => {}}
-                          className="h-4.5 w-4.5 rounded text-brand-600 focus:ring-brand-500 dark:focus:ring-brand-950 border-slate-350 dark:border-slate-700 mt-0.5 cursor-pointer"
+                          className="h-5 w-5 rounded text-brand-600 focus:ring-brand-500 dark:focus:ring-brand-950 border-slate-350 dark:border-slate-700 mt-0.5 cursor-pointer"
                         />
                         <div className="space-y-0.5">
                           <div className="text-xs font-bold text-slate-805 dark:text-slate-200">{item.label}</div>
@@ -974,7 +974,7 @@ export default function LeadDetails() {
                 
                 {reassignSuccess && (
                   <div className="p-2.5 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/60 text-emerald-800 dark:text-emerald-400 rounded-xl text-xs flex items-center gap-1.5 animate-fade-in">
-                    <Check className="h-4.5 w-4.5 shrink-0" />
+                    <Check className="h-5 w-5 shrink-0" />
                     <span>Lead reassigned successfully!</span>
                   </div>
                 )}

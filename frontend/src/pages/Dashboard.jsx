@@ -158,7 +158,7 @@ export default function Dashboard() {
           onClick={() => navigate('/leads')}
           className="premium-btn-primary py-2.5 px-4 font-semibold shrink-0"
         >
-          <Plus className="h-4.5 w-4.5" />
+          <Plus className="h-5 w-5" />
           <span>New Lead Ingest</span>
         </button>
       </div>
@@ -170,12 +170,12 @@ export default function Dashboard() {
           return (
             <div 
               key={kpi.title}
-              className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800/80 rounded-2xl p-4.5 shadow-sm hover:shadow-premium dark:hover:shadow-dark-premium hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between h-28"
+              className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800/80 rounded-2xl p-4 shadow-sm hover:shadow-premium dark:hover:shadow-dark-premium hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between h-28"
             >
               <div className="flex justify-between items-start">
                 <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">{kpi.title}</span>
                 <div className={`p-1.5 rounded-lg ${kpi.bgColor} border shrink-0`}>
-                  <Icon className={`h-4.5 w-4.5 ${kpi.textColor}`} />
+                  <Icon className={`h-5 w-5 ${kpi.textColor}`} />
                 </div>
               </div>
               <div>

@@ -57,7 +57,7 @@ export default function LeadQualificationCenter() {
 
       {/* Search Bar */}
       <div className="relative max-w-md select-none">
-        <Search className="absolute left-3.5 top-3.5 h-4.5 w-4.5 text-slate-405 dark:text-slate-500" />
+        <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 pointer-events-none" />
         <input
           type="text"
           placeholder="Filter by lead name, company, or temperature..."

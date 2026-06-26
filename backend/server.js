@@ -16,6 +16,14 @@ import { activityLogger } from './middleware/activityLogger.js';
 // Init environment variables
 dotenv.config();
 
+// Validate required environment variables at startup
+const REQUIRED_ENV_VARS = ['JWT_SECRET'];
+const missingEnvVars = REQUIRED_ENV_VARS.filter(varName => !process.env[varName]);
+if (missingEnvVars.length > 0) {
+  console.error(`FATAL: Missing required environment variables: ${missingEnvVars.join(', ')}`);
+  process.exit(1);
+}
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 

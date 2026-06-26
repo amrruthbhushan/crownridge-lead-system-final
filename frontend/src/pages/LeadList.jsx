@@ -153,9 +153,9 @@ export default function LeadList() {
 
         <button 
           onClick={() => setModalOpen(true)}
-          className="premium-btn-primary self-stretch sm:self-auto py-2.5 px-4.5 font-semibold"
+          className="premium-btn-primary self-stretch sm:self-auto py-2.5 px-5 font-semibold"
         >
-          <Plus className="h-4.5 w-4.5" />
+          <Plus className="h-5 w-5" />
           <span>Add New Lead</span>
         </button>
       </div>
@@ -165,13 +165,13 @@ export default function LeadList() {
         <form onSubmit={handleSearchSubmit} className="flex flex-col lg:flex-row gap-4">
           
           <div className="relative flex-1">
-            <Search className="absolute left-3.5 top-3.5 h-4.5 w-4.5 text-slate-400" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 pointer-events-none" />
             <input
               type="text"
               placeholder="Search by Lead Name, Company, Email or Industry..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="premium-input pl-10.5"
+              className="premium-input pl-11"
             />
           </div>
 
@@ -361,7 +361,7 @@ export default function LeadList() {
                 onClick={() => setPage(p => Math.max(1, p - 1))}
                 className="p-1.5 border border-slate-200 dark:border-slate-800 rounded-lg bg-white dark:bg-slate-900 disabled:opacity-50 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 cursor-pointer transition-colors"
               >
-                <ChevronLeft className="h-4.5 w-4.5" />
+                <ChevronLeft className="h-5 w-5" />
               </button>
               <span className="text-xs font-bold text-slate-655 dark:text-slate-405 px-2">
                 Page {page} of {totalPages}
@@ -371,7 +371,7 @@ export default function LeadList() {
                 onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                 className="p-1.5 border border-slate-200 dark:border-slate-800 rounded-lg bg-white dark:bg-slate-900 disabled:opacity-50 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 cursor-pointer transition-colors"
               >
-                <ChevronRight className="h-4.5 w-4.5" />
+                <ChevronRight className="h-5 w-5" />
               </button>
             </div>
           </div>
@@ -394,7 +394,7 @@ export default function LeadList() {
               
               {formError && (
                 <div className="p-3.5 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/60 text-red-800 dark:text-red-400 rounded-2xl flex items-center gap-2 text-xs">
-                  <ShieldAlert className="h-4.5 w-4.5 shrink-0" />
+                  <ShieldAlert className="h-5 w-5 shrink-0" />
                   <span>{formError}</span>
                 </div>
               )}

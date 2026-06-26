@@ -69,7 +69,7 @@ export default function Register() {
           <form onSubmit={handleRegister} className="space-y-4">
             {error && (
               <div className="p-3.5 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/60 text-red-800 dark:text-red-400 rounded-2xl flex items-center gap-2 text-xs">
-                <ShieldAlert className="h-4.5 w-4.5 shrink-0" />
+                <ShieldAlert className="h-5 w-5 shrink-0" />
                 <span>{error}</span>
               </div>
             )}
@@ -77,14 +77,14 @@ export default function Register() {
             <div className="space-y-1.5">
               <label className="text-[10px] font-bold text-slate-500 dark:text-slate-450 uppercase tracking-wider">Full Name</label>
               <div className="relative">
-                <User className="absolute left-3.5 top-3.5 h-4.5 w-4.5 text-slate-400" />
+                <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 pointer-events-none" />
                 <input
                   type="text"
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="John Doe"
-                  className="premium-input pl-10.5"
+                  className="premium-input pl-11"
                 />
               </div>
             </div>
@@ -92,14 +92,14 @@ export default function Register() {
             <div className="space-y-1.5">
               <label className="text-[10px] font-bold text-slate-500 dark:text-slate-450 uppercase tracking-wider">Email Address</label>
               <div className="relative">
-                <Mail className="absolute left-3.5 top-3.5 h-4.5 w-4.5 text-slate-400" />
+                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 pointer-events-none" />
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="johndoe@company.com"
-                  className="premium-input pl-10.5"
+                  className="premium-input pl-11"
                 />
               </div>
             </div>
@@ -107,13 +107,13 @@ export default function Register() {
             <div className="space-y-1.5">
               <label className="text-[10px] font-bold text-slate-500 dark:text-slate-450 uppercase tracking-wider">Password</label>
               <div className="relative">
-                <Lock className="absolute left-3.5 top-3.5 h-4.5 w-4.5 text-slate-400" />
+                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 pointer-events-none" />
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="premium-input pl-10.5"
+                  className="premium-input pl-11"
                 />
               </div>
             </div>
@@ -121,11 +121,11 @@ export default function Register() {
             <div className="space-y-1.5">
               <label className="text-[10px] font-bold text-slate-500 dark:text-slate-450 uppercase tracking-wider">Workspace Role</label>
               <div className="relative">
-                <Shield className="absolute left-3.5 top-3.5 h-4.5 w-4.5 text-slate-400" />
+                <Shield className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 pointer-events-none" />
                 <select
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
-                  className="premium-input pl-10.5 appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2364748b%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%252015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-[length:1.25rem] bg-[right_0.75rem_center] bg-no-repeat pr-10"
+                  className="premium-input pl-11 appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2364748b%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%252015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-[length:1.25rem] bg-[right_0.75rem_center] bg-no-repeat pr-10"
                 >
                   <option value="SALES_REP">Sales Representative (Default)</option>
                   <option value="ADMIN">Administrator</option>
