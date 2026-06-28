@@ -28,18 +28,30 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
+console.log("FRONTEND_URL:", process.env.FRONTEND_URL);
+console.log("NODE_ENV:", process.env.NODE_ENV);
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+  "https://crownridge-lead-system-final.vercel.app"
+];
+
 app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    'http://127.0.0.1:5173',
-    'https://crownridge-lead-system-final.vercel.app'
-  ],
+  origin: (origin, callback) => {
+    console.log("Origin:", origin);
+
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(activityLogger);
-
 // Health Check API
 app.get('/api/health', (req, res) => {
   res.json({ status: 'UP', message: 'IT Consultancy Scoring System API is operational.' });
