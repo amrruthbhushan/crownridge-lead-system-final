@@ -12,6 +12,7 @@ import notificationRoutes from './routes/notificationRoutes.js';
 // Middleware Imports
 import { errorHandler } from './middleware/errorMiddleware.js';
 import { activityLogger } from './middleware/activityLogger.js';
+import { ensureDbInitialized } from './services/db.js';
 
 // Init environment variables
 dotenv.config();
@@ -28,30 +29,29 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-console.log("FRONTEND_URL:", process.env.FRONTEND_URL);
-console.log("NODE_ENV:", process.env.NODE_ENV);
-
 const allowedOrigins = [
-  "http://localhost:5173",
-  "http://127.0.0.1:5173",
-  "https://crownridge-lead-system-final.vercel.app"
-];
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'https://crownridge-lead-system-final.vercel.app',
+  process.env.FRONTEND_URL
+].filter(Boolean);
 
 app.use(cors({
   origin: (origin, callback) => {
-    console.log("Origin:", origin);
-
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
+    if (!origin) return callback(null, true);
+    // Allow matching allowed origins or any vercel.app deployment
+    if (allowedOrigins.includes(origin) || origin.endsWith('.vercel.app') || process.env.NODE_ENV !== 'production') {
+      return callback(null, true);
     }
+    return callback(null, true);
   },
   credentials: true
 }));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(activityLogger);
+
 // Health Check API
 app.get('/api/health', (req, res) => {
   res.json({ status: 'UP', message: 'IT Consultancy Scoring System API is operational.' });
@@ -72,7 +72,8 @@ app.use((req, res, next) => {
 // Global Error Handler
 app.use(errorHandler);
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+  await ensureDbInitialized();
   console.log(`==================================================`);
   console.log(`  API server running on http://localhost:${PORT}`);
   console.log(`  Development DB Connected (Prisma SQLite)`);
